@@ -7,20 +7,11 @@ class MyApp < Sinatra::Base
     erb :index
   end
   
-  get '/about' do
-    erb :about
-  end
-  
-  post '/calculate' do
-    #getting info out of params hash
-    first=params[:num1].to_f
-    second=params[:num2].to_f
-    user_birth=params[:birthday]
-    #calculating using info from params
-    @sum=add(first,second)
-    @days_alive=years_alive(user_birth)
-    #directing to our results page
+  post '/result' do
+    user_name=params[:person]
+    @capname=capitalize(user_name)
     erb :results
   end
+
 
 end
